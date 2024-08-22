@@ -1,1 +1,9 @@
-
+body{
+  background-image: url("./lmao.png");
+}
+.bt {
+  margin: auto;
+  width: 50%;
+  border: 10px solid blue;
+  padding: 10px;
+}
