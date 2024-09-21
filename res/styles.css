@@ -1,4 +1,4 @@
-body{
+body.s1{
   background-image: url("./lmao.png");
 }
 .bt {
@@ -6,4 +6,7 @@ body{
   width: 50%;
   border: 10px solid blue;
   padding: 10px;
+}
+header.ns{
+  background-color:#000000;
 }
