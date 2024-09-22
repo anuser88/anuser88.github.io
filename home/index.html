@@ -38,7 +38,13 @@ $(".head").mouseenter(function() {
     backgroundColor: "rgb( 0, 0, 0 )"
   });
 });
-alert("end")
+<script>
+$(".head").mouseleave(function() {
+  $( ".head" ).animate({
+    color: "rgb(255,255,255)",
+    backgroundColor: "rgb( 0, 0, 0 )"
+  });
+});
 </script>
  
 </body>
