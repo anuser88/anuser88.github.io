@@ -34,17 +34,17 @@
  
 <script>
 let a=0;
-
-
-
+alert("start");
 $( "#toggle" ).click(function() {
   if (a==0) {
+    alert("1");
     $( ".head" ).animate({
       color: "rgb(255,255,255)",
       backgroundColor: "rgb( 0, 0, 0 )"
     });
   }else{
-  $(".head").css("background-color":"#ffffff", "color":"#000000");
+    alert("2")
+    $(".head").css("background-color":"#ffffff", "color":"#000000");
   };
 });
 </script>
