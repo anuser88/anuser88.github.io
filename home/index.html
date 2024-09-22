@@ -33,12 +33,27 @@
 <button id="toggle">lmao</button>
  
 <script>
+let a=0
 $( "#toggle" ).click(function() {
+  if (a==0) {
+    let a=1;
+    ani();
+  }else {
+    let a=0;
+    reset();
+  };
+});
+
+function ani() {
   $( ".head" ).animate({
     color: "rgb(255,255,255)",
     backgroundColor: "rgb( 0, 0, 0 )"
   });
-});
+};
+
+function reset() {
+  $(".head").css("background-color":"#ffffff", "color":"#000000");
+};
 </script>
  
 </body>
