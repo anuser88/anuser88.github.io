@@ -7,11 +7,16 @@
   <link rel="stylesheet" href="../res/styles.css">
   <link rel="icon" type="image/x-icon" href="../res/lmao.ico">
   <style>
-  #head {
+  .head {
     color: #000000;
     background-color: #ffffff;
     font-size: 25px;
     text-align: left;
+  }
+  #logo {
+    margin-top:10px;
+    margin-bottom:10px;
+    margin-left:5%;
   }
   </style>
   <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
@@ -19,17 +24,14 @@
 </head>
 <body>
  
-<div id="head">
-  <img src="https://uploads.scratch.mit.edu/get_image/user/113337324_60x60.png" alt="My Scratch logo" width="60" height="60">
-  <h1>
-    Lmao
-  </h1>
+<div class="head">
+  <img src="https://uploads.scratch.mit.edu/get_image/user/113337324_60x60.png" alt="My Scratch logo" width="60" height="60" id="logo">
 </div>
 <button id="toggle">lmao</button>
  
 <script>
 $( "#toggle" ).click(function() {
-  $( "#head" ).animate({
+  $( ".head" ).animate({
     color: "rgb(255,255,255)",
     backgroundColor: "rgb( 0, 0, 0 )"
   });
