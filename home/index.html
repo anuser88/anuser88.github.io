@@ -9,8 +9,8 @@
   <link rel="icon" type="image/x-icon" href="../res/lmao.ico">
   <style>
   .head {
-    color: #000000;
-    background-color: #ffffff;
+    color: #ffffff;
+    background-color: #000000;
     font-size: 35px;
     text-align: left;
   }
@@ -32,13 +32,13 @@
   </div>
 </div>
 <script>
-$(".head").mouseenter(function() {
+$(".head").mouseleave(function() {
   $( ".head" ).animate({
     color: "rgb(255,255,255)",
     backgroundColor: "rgb(0,0,0)"
   });
 });
-$(".head").mouseleave(function() {
+$(".head").mouseenter(function() {
   $( ".head" ).animate({
     color: "rgb(0,0,0)",
     backgroundColor: "rgb(255,255,255)"
