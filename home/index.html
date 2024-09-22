@@ -22,7 +22,6 @@
   <script src="https://code.jquery.com/ui/1.13.0/jquery-ui.js"></script>
 </head>
 <body>
- 
 <div class="head">
   <div class="headcontent">
     <img src="https://uploads.scratch.mit.edu/get_image/user/113337324_60x60.png" alt="My Scratch logo" width="60" height="60">
@@ -30,7 +29,7 @@
   </div>
 </div>
 <script>
-$(".head").mouseleave(function s() {
+$(".head").mouseleave(function() {
   $( ".head" ).animate({
     color: "rgb(255,255,255)",
     backgroundColor: "rgb(0,0,0)"
@@ -42,9 +41,9 @@ $(".head").mouseenter(function() {
     backgroundColor: "rgb(255,255,255)"
   });
 });
-s()
-
+$(document).ready(function() {
+  $(".head").css("color":"#ffffff","background-color":"#000000")
+});
 </script>
- 
 </body>
 </html>
