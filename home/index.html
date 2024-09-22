@@ -45,8 +45,7 @@ function ani() {
 function reset() {
   $(".head").css("background-color":"#ffffff", "color":"#000000");
 }
-
-$( "#toggle" ).click(function() {
+function change() {
   if (a==0) {
     let a=1;
     ani();
@@ -54,7 +53,8 @@ $( "#toggle" ).click(function() {
     let a=0;
     reset();
   }
-});
+}
+$( "#toggle" ).click(change());
 </script>
  
 </body>
