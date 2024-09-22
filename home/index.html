@@ -35,26 +35,18 @@
 <script>
 let a=0;
 
-function ani() {
-  $( ".head" ).animate({
-    color: "rgb(255,255,255)",
-    backgroundColor: "rgb( 0, 0, 0 )"
-  });
-}
 
-function reset() {
-  $(".head").css("background-color":"#ffffff", "color":"#000000");
-}
-function change() {
+
+$( "#toggle" ).click(function() {
   if (a==0) {
-    let a=1;
-    ani();
-  }else {
-    let a=0;
-    reset();
-  }
-}
-$( "#toggle" ).click(change());
+    $( ".head" ).animate({
+      color: "rgb(255,255,255)",
+      backgroundColor: "rgb( 0, 0, 0 )"
+    });
+  }else{
+  $(".head").css("background-color":"#ffffff", "color":"#000000");
+  };
+});
 </script>
  
 </body>
