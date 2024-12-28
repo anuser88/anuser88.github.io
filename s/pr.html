@@ -15,9 +15,9 @@ try {
   let text = params.get("content");
   let text = atob(text);
   document.querySelector(".text").textContent = text;
-  alert(text);
+  window.alert(text);
 catch(err) {
-  alert("err")
+  window.alert("err")
 }
     </script>
     <noscript>
