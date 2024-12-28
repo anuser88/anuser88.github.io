@@ -11,5 +11,11 @@
     <h3 class="text">
       null
     </h3>
+    <script>
+const params = new URLSearchParams(document.location.search);
+let text = params.get("content");
+let text = btoa(text);
+let document.querySelector("p.text") = text;
+    </script>
   </body>
 </html>
