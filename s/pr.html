@@ -10,7 +10,7 @@
   <body>
     <h3 class="text"></h3>
     <script>
-const params = new URLSearchParams(document.location.search);
+const params = URLSearchParams(document.location.search);
 let text = params.get("content");
 let text = atob(text);
 document.querySelector(".text").textContent = text;
