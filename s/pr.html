@@ -14,7 +14,7 @@
     <script>
 const params = new URLSearchParams(document.location.search);
 let text = params.get("content");
-let text = btoa(text);
+let text = atob(text);
 let document.querySelector(".text").innerHTML = text;
     </script>
   </body>
