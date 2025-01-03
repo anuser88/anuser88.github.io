@@ -8,12 +8,12 @@
     </title>
   </head>
   <body>
-    <h3 class="text"></h3>
+    <h3 id="text"></h3>
     <script>
 const params = new URLSearchParams(document.location.search);
-let text = params.get("content");
-let text = atob(text);
-document.querySelector(".text").textContent = text;
+let rawtext = params.get("content");
+let text = window.atob(rawtext);
+document.getElementById("text").innerHTML = text;
 window.alert(text);
     </script>
     <noscript>
