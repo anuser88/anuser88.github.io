@@ -10,9 +10,14 @@
   <body>
     <h3 id="text"></h3>
     <script>
+function b64DecodeUnicode(str) {
+    return decodeURIComponent(atob(str).split('').map(function(c) {
+        return '%' + ('00' + c.charCodeAt(0).toString(16)).slice(-2);
+    }).join(''));
+}
 const params = new URLSearchParams(document.location.search);
 let rawtext = params.get("content");
-let text = window.atob(rawtext);
+let text = b64DecodeUnicode(rawtext);
 document.getElementById("text").innerHTML = text
     </script>
     <noscript>
