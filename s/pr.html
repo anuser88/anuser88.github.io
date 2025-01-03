@@ -12,10 +12,25 @@
     <script>
 function ab( str ) {
     return decodeURIComponent(escape(window.atob( str )));
-}
+};
+function encodeHTML(str){
+ var aStr = str.split(''),
+     i = aStr.length,
+     aRet = [];
+
+   while (--i) {
+    var iC = aStr[i].charCodeAt();
+    if (iC < 65 || iC > 127 || (iC>90 && iC<97)) {
+      aRet.push('&#'+iC+';');
+    } else {
+      aRet.push(aStr[i]);
+    }
+  }
+ return aRet.reverse().join('');
+};
 const params = new URLSearchParams(document.location.search);
 let rawtext = params.get("content");
-let text = ab(rawtext);
+let text = encodeHTML(ab(rawtext));
 document.getElementById("text").innerHTML = text
     </script>
     <noscript>
