@@ -30,8 +30,13 @@ function encodeHTML(str){
 };
 const params = new URLSearchParams(document.location.search);
 let rawtext = params.get("content");
+if (rawtext==null) {
+  // none
+}else if (rawtext==1) {
+  fetch('https://anuser88.github.io/s/cont1.txt').then(resp=>{return resp.text()})
+}
 let text = encodeHTML(ab(rawtext));
-document.getElementById("text").innerHTML = text
+document.getElementById("text").innerHTML = `${text}`
     </script>
     <noscript>
       D...
