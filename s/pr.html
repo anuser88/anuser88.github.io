@@ -13,8 +13,7 @@
 const params = new URLSearchParams(document.location.search);
 let rawtext = params.get("content");
 let text = window.atob(rawtext);
-document.getElementById("text").innerHTML = text;
-window.alert(text);
+document.getElementById("text").innerHTML = text
     </script>
     <noscript>
       D...
