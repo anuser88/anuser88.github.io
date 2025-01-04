@@ -66,12 +66,12 @@
       }
       $("p#content").hide()
       function sent() {
-        $("#lock").append('<button id="verify">Verify</button>')
+        $("#lock").append('<button>Verify</button>')
       }
       if (key!=null) {
         sent()
       }
-      $("#verify").click(function () {
+      $("button").click(function () {
         check()
       })
     </script>
