@@ -29,9 +29,11 @@
         Access key:
       </label>
       <input id="key" name="key" type="text">
-      <input type="submit" value="Submit">
+      <input type="submit" value="Set">
     </form>
     <div id="lock">
+      <button id="but">Verify</button>
+      Nhập mk vào Access key, ấn set, ấn Verify.
     </div>
     <p id="content">
       |  Nơi nào ở chốn phương xa<br/>
@@ -66,7 +68,7 @@
       }
       $("p#content").hide()
       function sent() {
-        $("#lock").append('<button>Verify</button>')
+        $("#but").show()
       }
       if (key!=null) {
         sent()
