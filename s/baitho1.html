@@ -32,7 +32,7 @@
       <input type="submit" value="Set">
     </form>
     <div id="lock">
-      <button id="but">Verify</button><br/>
+      <p id="but">[Verify]</p><br/>
       *Nhập mk vào Access key, ấn Set, ấn Verify.
     </div>
     <p id="content">
@@ -69,7 +69,7 @@
       }
       $("p#content").hide()
       $(document).ready(function () {
-        $("#but").on("click",function () {
+        $("p#but").on("click",function () {
           check()
           alert(2)
         })
