@@ -29,11 +29,10 @@
         Access key:
       </label>
       <input id="key" name="key" type="text">
-      <input type="submit" value="Set">
+      <input type="submit" value="Verify">
     </form>
     <div id="lock">
-      <p id="but">[Verify]</p><br/>
-      *Nhập mk vào Access key, ấn Set, ấn Verify.
+      *Nhập mk vào Access key, ấn Verify.
     </div>
     <p id="content">
       |  Nơi nào ở chốn phương xa<br/>
@@ -67,13 +66,7 @@
         }
         alert(1)
       }
-      $("p#content").hide()
-      $(document).ready(function () {
-        $("p#but").on("click",function () {
-          check()
-          alert(2)
-        })
-      })
+      check()
     </script>
   </body>
 </html>
