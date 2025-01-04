@@ -1,1 +1,57 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Pài thơ gg của Thành dz vcl"/>
+    <title>
+      Pài thơ gg
+    </title>
+    <style>
+      form#form {
+        color:#ffffff
+      }
+      h1#ti {
+        color:#7f7f7f
+      }
+      p#content {
+        font-size:27px;
+        color:#000000;
+      }
+      body {
+        background-color:#000000
+      }
+    </style>
+  </head>
+  <body>
+    <h1 id="ti">
+      Pài thơ gg
+    </h1>
+    <form onsubmit="check()" id="form">
+      <label for="key">
+        Access key:
+      </label>
+      <input id="key" name="key" type="text">
+      <input type="submit" value="Submit">
+    </form>
+    <p id="content">
+      Sáng qua, đêm đến, lên giường;<br/>
+      Đ** em sướng quá, liệt bà cương dương 0_0.<br/>
+      Ngày mai, lúc sáng còn sương;<br/>
+      S*c ra ngoáy trái, cương dương liệt bà 0_0.
+    </p>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script>
+      function check() {
+        let key=$("#key").text()
+        if (text=="abc"){
+          $("#form").remove()
+          $("body").css("background-color","white")
+        }else {
+          alert("wrong")
+        }
+      }
+    </script>
+  </body>
+</html>
 
