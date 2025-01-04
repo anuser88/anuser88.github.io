@@ -20,11 +20,11 @@
       }
     </style>
   </head>
-  <body>
+  <body onload="check()">
     <h1 id="ti">
       Pài thơ gg
     </h1>
-    <form onsubmit="check()" id="form">
+    <form id="form">
       <label for="key">
         Access key:
       </label>
@@ -51,13 +51,12 @@
     <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
     <script>
       function check() {
-        let key=$("#key").text()
+        const param=new URLSearchParams(document.location.search)
+        let key=param.get("key")
         if (text=="abc"){
           $("#form").remove()
           $("body").css("background-color","black")
           $("p#content").show()
-        }else {
-          alert("wrong")
         }
       }
       $("p#content").hide()
