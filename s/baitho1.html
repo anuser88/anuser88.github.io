@@ -53,6 +53,7 @@
     </p>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
     <script>
+      $("p#content").hide()
       const param=new URLSearchParams(document.location.search)
       let key=param.get("key")
       function check() {
@@ -66,7 +67,10 @@
         }
         alert(1)
       }
-      check()
+      alert(key)
+      $(document).ready(function () {
+        check()
+      })
     </script>
   </body>
 </html>
