@@ -33,7 +33,7 @@
     </form>
     <div id="lock">
       <button id="but">Verify</button>
-      Nhập mk vào Access key, ấn set, ấn Verify.
+      Nhập mk vào Access key, ấn Set, ấn Verify.
     </div>
     <p id="content">
       |  Nơi nào ở chốn phương xa<br/>
@@ -67,8 +67,10 @@
         }
       }
       $("p#content").hide()
-      $("#but").click(function () {
-        check()
+      $(document).ready(function () {
+        $("#but").click(function () {
+          check()
+        })
       })
     </script>
   </body>
