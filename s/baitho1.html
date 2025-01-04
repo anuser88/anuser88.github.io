@@ -66,11 +66,14 @@
       }
       $("p#content").hide()
       function sent() {
-        $("#lock").append('<button id="verify" onclick="check()">Verify</button>')
+        $("#lock").append('<button id="verify">Verify</button>')
       }
       if (key!=null) {
         sent()
       }
+      $("#verify").click(function () {
+        check()
+      })
     </script>
   </body>
 </html>
