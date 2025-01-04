@@ -32,8 +32,8 @@
       <input type="submit" value="Set">
     </form>
     <div id="lock">
-      <button id="but">Verify</button>
-      Nhập mk vào Access key, ấn Set, ấn Verify.
+      <button id="but">Verify</button><br/>
+      *Nhập mk vào Access key, ấn Set, ấn Verify.
     </div>
     <p id="content">
       |  Nơi nào ở chốn phương xa<br/>
@@ -69,7 +69,7 @@
       }
       $("p#content").hide()
       $(document).ready(function () {
-        $("#but").click(function () {
+        $("#but").on("click",function () {
           check()
           alert(2)
         })
