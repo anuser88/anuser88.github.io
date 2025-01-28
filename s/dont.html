@@ -37,8 +37,8 @@
     <p id="content">
       |--  Nơi nào ở chốn phương xa<br/>
       |Năm sao khách sạn, trăm(100) k một giường.<br/>
-      |--  S.ờ ai, ai đá lên phường<br/>
-      |Ta ra trốn trại, xem vườn gái tây.<br/>
+      |--  S.ờ ai, ai đá lên giường<br/>
+      |Ta đi trốn vợ, xem vườn gái tây.<br/>
       |<br/>
       |--  Nơi đây, bức tường mới xây<br/>
       |Ngăn tôi đến h.ú.p e.m tây bên tường.<br/>
@@ -65,7 +65,7 @@
           .join("")
         return hashHex
       }
-      digestMessage(key).then((digestHex) => let key = digestHex);
+      digestMessage(key).then((digestHex) => let key = digestHex.toLowerCase());
       function check() {
         if (key=="194727a1070da1cf6c9c0beea458dfe6015f364457c1a63451203c432c3c6b4d"){
           $("body").css("background-color","black")
