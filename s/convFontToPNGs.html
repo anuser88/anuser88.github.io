@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>TTF to PNGs Exporter (For Scratch Text Engine)</title>
+  <style>
+    body { font-family: sans-serif; padding: 2rem; }
+    canvas { display: none; }
+    .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(100px, 1fr)); gap: 10px; }
+    img { width: 80px; height: auto; border: 1px solid #ccc; }
+  </style>
+</head>
+<body>
+  <h1>TTF Font to PNGs Exporter (For Scratch Text Engine)</h1>
+  <input type="file" id="fontInput" accept=".ttf" /><br/>
+  <button id="renderBtn">Render Characters</button>
+  <button id="downloadBtn">Download All PNGs</button><br/>
+  <h3>Instruction:</h3>
+  <p>
+  Step 1: Go Download A Font As .TTF(TrueType Font) <a href="../res/DejaVuSansMono.ttf">Example</a><br/>
+  Step 2: Upload That File<br/>
+  Step 3: Render Characters<br/>
+  Step 4: Download Them Then Extract<br/>
+  Step 5: Import to Scratch
+  
+  </p><br/>
+  <h3>Preview:</h3>
+  <div class="grid" id="output"></div>
+  <canvas id="canvas" width="128" height="128"></canvas>
+
+  <script>
+    let font = null;
+    let fontName = "CustomFont";
+    let pngData = [];
+
+    document.getElementById('fontInput').addEventListener('change', async (e) => {
+      const file = e.target.files[0];
+      if (!file) return;
+      const arrayBuffer = await file.arrayBuffer();
+      const blob = new Blob([arrayBuffer], { type: "font/ttf" });
+      const url = URL.createObjectURL(blob);
+
+      const newFont = new FontFace(fontName, `url(${url})`);
+      await newFont.load();
+      document.fonts.add(newFont);
+      font = newFont;
+      alert("Font loaded successfully.");
+    });
+
+    document.getElementById('renderBtn').addEventListener('click', () => {
+      if (!font) return alert("Please upload a font file first.");
+      const chars = [...Array(95)].map((_, i) => String.fromCharCode(i + 32));
+      const canvas = document.getElementById('canvas');
+      const ctx = canvas.getContext('2d');
+      const output = document.getElementById('output');
+      output.innerHTML = "";
+      pngData = [];
+
+      chars.forEach((char, index) => {
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        ctx.fillStyle = "white";
+        ctx.fillRect(0, 0, canvas.width, canvas.height);
+        ctx.fillStyle = "black";
+        ctx.font = `100px ${fontName}`;
+        ctx.textAlign = "center";
+        ctx.textBaseline = "middle";
+        ctx.fillText(char, canvas.width / 2, canvas.height / 2);
+
+        const dataUrl = canvas.toDataURL("image/png");
+        pngData.push({ char, dataUrl });
+
+        const img = document.createElement("img");
+        img.src = dataUrl;
+        img.alt = char;
+        output.appendChild(img);
+      });
+    });
+
+    document.getElementById('downloadBtn').addEventListener('click', async () => {
+      if (pngData.length === 0) return alert("No PNGs to download.");
+
+      const zip = new JSZip();
+      pngData.forEach(({ char, dataUrl }, i) => {
+        const base64 = dataUrl.split(',')[1];
+        zip.file(`_${i}.png`, base64, { base64: true });
+      });
+      const blob = await zip.generateAsync({ type: "blob" });
+      const link = document.createElement('a');
+      link.href = URL.createObjectURL(blob);
+      link.download = "font_pngs.zip";
+      link.click();
+    });
+  </script>
+
+  <!-- Include JSZip Library -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js"></script>
+</body>
+</html>
