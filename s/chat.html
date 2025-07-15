@@ -1,11 +1,12 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Ably Token Auth via authUrl</title>
+  <title>chát</title>
   <script src="https://cdn.ably.io/lib/ably.min-1.js"></script>
+  <meta charset="utf-8"/>
 </head>
 <body>
-  <h2>Ably Auth Test</h2>
+  <h2>chát</h2>
   <button id="send-button">send</button>
   <ul id="log"></ul>
 
@@ -15,7 +16,7 @@
     });
 
     ably.connection.on('connected', () => {
-      log('✅ Connected to Ably with token auth');
+      log('✅ Connected');
 
       const channel = ably.channels.get('beta');
 
@@ -29,7 +30,7 @@
     });
 
     ably.connection.on('failed', () => {
-      log('❌ Failed to connect to Ably');
+      log('❌ Failed to connect');
     });
 
     function log(message) {
