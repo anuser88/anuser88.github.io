@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Ably Token Auth via authUrl</title>
+  <script src="https://cdn.ably.io/lib/ably.min-1.js"></script>
+</head>
+<body>
+  <h2>Ably Auth Test</h2>
+  <button id="send-button">send</button>
+  <ul id="log"></ul>
+
+  <script>
+    const ably = new Ably.Realtime({
+      authUrl: 'https://m-auth.imezx6t.workers.dev' // ✅ Your token server
+    });
+
+    ably.connection.on('connected', () => {
+      log('✅ Connected to Ably with token auth');
+
+      const channel = ably.channels.get('beta');
+
+      channel.subscribe('msg', (msg) => {
+        log(`📥 Received: ${msg.data}`);
+      });
+	  const sendButt = document.getElementById("send-button")
+	  sendButt.addEventListener("click", () => {
+	    channel.publish('msg', prompt("msg", "hello, world!"));
+	  });
+    });
+
+    ably.connection.on('failed', () => {
+      log('❌ Failed to connect to Ably');
+    });
+
+    function log(message) {
+      const li = document.createElement('li');
+      li.textContent = message;
+      document.getElementById('log').appendChild(li);
+    };
+  </script>
+  <noscript>JavaScript needed</noscript>
+</body>
+</html>
