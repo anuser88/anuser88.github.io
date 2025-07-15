@@ -15,17 +15,19 @@
       authUrl: 'https://m-auth.imezx6t.workers.dev' // ✅ Your token server
     });
 
+    const username = prompt("username", "user") + math.randomInt(100, 1000).toString()
+
     ably.connection.on('connected', () => {
       log('✅ Connected');
-
+    
       const channel = ably.channels.get('beta');
 
       channel.subscribe('msg', (msg) => {
-        log(`📥 Received: ${msg.data}`);
+        log(msg.data);
       });
 	  const sendButt = document.getElementById("send-button")
 	  sendButt.addEventListener("click", () => {
-	    channel.publish('msg', prompt("msg", "hello, world!"));
+	    channel.publish('msg', username + prompt("msg", "hello, world!"));
 	  });
     });
 
