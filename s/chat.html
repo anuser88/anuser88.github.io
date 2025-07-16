@@ -29,7 +29,7 @@
       const sendButt = document.getElementById("send-msg");
       const msg = document.getElementById("msg");
       sendButt.addEventListener("click", () => {
-        channel.publish('msg', name + msg.value);
+        channel.publish('msg', names + msg.value);
       });
       const uns = document.getElementById("uns");
       uns.addEventListener("click", setUsername);
@@ -52,7 +52,7 @@
       li.textContent = message;
       document.getElementById('log').appendChild(li);
     };
-    function namer() {const name = username.value};
+    function namer() {const names = username.value};
   </script>
   <noscript>JavaScript needed</noscript>
 </body>
