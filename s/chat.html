@@ -14,6 +14,7 @@
   <ul id="log"></ul>
   <script>
     const username = document.getElementById("username");
+    let name = ""
     const ably = new Ably.Realtime({
       authUrl: 'https://m-auth.imezx6t.workers.dev'
     });
@@ -29,13 +30,13 @@
       const sendButt = document.getElementById("send-msg");
       const msg = document.getElementById("msg");
       sendButt.addEventListener("click", () => {
-        channel.publish('msg', names + msg.value);
+        channel.publish('msg', name + msg.value);
       });
       const uns = document.getElementById("uns");
       uns.addEventListener("click", setUsername);
       function setUsername() {
         if (!username.value=="") {
-          namer();
+          name = username.value;
           username.disabled = true;
           uns.disabled = true;
           uns.removeEventListener("click", setUsername);
@@ -52,7 +53,6 @@
       li.textContent = message;
       document.getElementById('log').appendChild(li);
     };
-    function namer() {const names = username.value};
   </script>
   <noscript>JavaScript needed</noscript>
 </body>
