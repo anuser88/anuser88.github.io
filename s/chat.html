@@ -81,7 +81,7 @@
       log('✅ Connected');
       const channel = ably.channels.get('beta');
       channel.subscribe('msg', (msg) => {
-        log(censorBadWords(msg.data));
+        log(censorBadWords(msg.data).censored);
       });
       const sendButt = document.getElementById("send-msg");
       const msg = document.getElementById("msg");
