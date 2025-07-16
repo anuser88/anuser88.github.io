@@ -1,13 +1,12 @@
 // badword.js
 
-function censorBadWords(text) {
-  let badWords = []
-  fetch('https://raw.githubusercontent.com/LDNOOBW/List-of-Dirty-Naughty-Obscene-and-Otherwise-Bad-Words/refs/heads/master/en')
+fetch('https://raw.githubusercontent.com/LDNOOBW/List-of-Dirty-Naughty-Obscene-and-Otherwise-Bad-Words/refs/heads/master/en')
   .then(res => res.text())
   .then(text => {
-    badWords = text.split('\n').map(line => line.trim()).filter(Boolean);
-  });
+    const badWords = text.split('\n').map(line => line.trim()).filter(Boolean);
+});
 
+function censorBadWords(text) {
   function generateRegex(word) {
     const pattern = word
       .split('')
