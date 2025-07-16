@@ -19,14 +19,15 @@
       log('✅ Connected');
     
       const channel = ably.channels.get('beta');
-      const username = prompt("username", "user") + math.randomInt(100, 1000).toString()
+      
       channel.subscribe('msg', (msg) => {
         log(msg.data);
       });
-	  const sendButt = document.getElementById("send-button")
-	  sendButt.addEventListener("click", () => {
-	    channel.publish('msg', username + prompt("msg", "hello, world!"));
-	  });
+      const sendButt = document.getElementById("send-button")
+      sendButt.addEventListener("click", () => {
+        channel.publish('msg', username + prompt("msg", "hello, world!"));
+      });
+      const username = prompt("username", "user") + math.randomInt(100, 1000).toString()
     });
 
     ably.connection.on('failed', () => {
