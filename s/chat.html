@@ -34,7 +34,7 @@
       const uns = document.getElementById("uns");
       uns.addEventListener("click", setUsername);
       function setUsername() {
-        if (username.value=="") {
+        if (!username.value=="") {
           namer();
           username.disabled = true;
           uns.disabled = true;
