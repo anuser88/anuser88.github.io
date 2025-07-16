@@ -30,13 +30,13 @@
       const sendButt = document.getElementById("send-msg");
       const msg = document.getElementById("msg");
       sendButt.addEventListener("click", () => {
-        channel.publish('msg', name + msg.value);
+        channel.publish('msg', name + ": " + msg.value);
       });
       const uns = document.getElementById("uns");
       uns.addEventListener("click", setUsername);
       function setUsername() {
         if (!username.value=="") {
-          name = username.value;
+          name = username.value + math.randomInt(100, 1000).toString()
           username.disabled = true;
           uns.disabled = true;
           uns.removeEventListener("click", setUsername);
