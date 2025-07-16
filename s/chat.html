@@ -85,8 +85,10 @@
       const sendButt = document.getElementById("send-msg");
       const msg = document.getElementById("msg");
       sendButt.addEventListener("click", () => {
-        channel.publish('msg', name + ": " + msg.value);
-        msg.value="";
+        if (msg.value == "") {
+          channel.publish('msg', name + ": " + msg.value);
+          msg.value="";
+        };
       });
       const uns = document.getElementById("uns");
       uns.addEventListener("click", setUsername);
