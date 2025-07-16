@@ -6,15 +6,11 @@
   <meta charset="utf-8"/>
 </head>
 <body>
-  <h2>chát</h2>
-  <form>
-    <label for="username">Username: </label>
-    <input type="text" id="username" name="username" value="user"/>
-    <button id="uns" onclick="setUsername()">Submit</button><br/>
-    <label for="msg">Message: </label>
-    <input type="text" id="msg" name="msg" value="hello"/>
-    <button id="send-msg">Send</button><br/>
-  </form>
+  <h2>chát</h2>Username: 
+  <input type="text" id="username" name="username" value="user"/>
+  <button id="uns" onclick="setUsername()">Submit</button><br/>Message: 
+  <input type="text" id="msg" name="msg" value="hello"/>
+  <button id="send-msg">Send</button><br/>
   <ul id="log"></ul>
   <script>
     const ably = new Ably.Realtime({
