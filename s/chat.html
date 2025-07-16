@@ -7,9 +7,15 @@
 </head>
 <body>
   <h2>chát</h2>
-  <button id="send-button">send</button>
+  <form>
+    <label for="username">Username: </label>
+    <input type="text" id="username" name="username" value="user"/>
+    <button id="uns">Submit</button><br/>
+    <label for="msg">Message: </label>
+    <input type="text" id="msg" name="msg" value="hello"/>
+    <button id="send-msg">Send</button><br/>
+  </form>
   <ul id="log"></ul>
-
   <script>
     const ably = new Ably.Realtime({
       authUrl: 'https://m-auth.imezx6t.workers.dev'
@@ -23,11 +29,16 @@
       channel.subscribe('msg', (msg) => {
         log(msg.data);
       });
-      const sendButt = document.getElementById("send-button")
+      const sendButt = document.getElementById("send-msg")
+      const msg = document.getElementById("msg")
       sendButt.addEventListener("click", () => {
-        channel.publish('msg', username + prompt("msg", "hello, world!"));
+        channel.publish('msg', username + msg.value);
       });
-      const username = prompt("username", "user") + math.randomInt(100, 1000).toString()
+      const uns = document.getElementById("uns")
+      uns.addEventListener("click", setUsername)
+      function setUsername() {
+        uns.removeEventListener
+      }
     });
 
     ably.connection.on('failed', () => {
