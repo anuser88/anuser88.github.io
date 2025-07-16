@@ -4,30 +4,65 @@
   <title>chát</title>
   <script src="https://cdn.ably.io/lib/ably.min-1.js"></script>
   <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <style>
+    html, body {
+      margin: 0;
+      padding: 0;
+      height: 100%;
+      overflow: hidden;
+      font-family: sans-serif;
+    }
+    #top {
+      background-color: #333;
+      color: white;
+      padding: 1rem;
+    }
+    #content {
+      background-color: #000000;
+      color: #ffffff;
+      height: calc(100vh - 150px);
+      overflow-y: auto;
+      overflow-x: hidden;
+      word-break: break-word;
+      white-space: normal;
+      padding: 1rem;
+      box-sizing: border-box;
+    }
+  </style>
 </head>
 <body>
-  <h2>chát</h2>Username: 
-  <input type="text" id="username" name="username" value="user"/>
-  <button id="uns">Submit</button><br/>Message: 
-  <input type="text" id="msg" name="msg" value="hello"/>
-  <button id="send-msg">Send</button><br/>
-  <ul id="log"></ul>
+  <div id="top">
+    <h2>chát</h2>Username: 
+    <input type="text" id="username" name="username" value="user"/>
+    <button id="uns">Submit</button><br/>Message: 
+    <input type="text" id="msg" name="msg" value="hello"/>
+    <button id="send-msg">Send</button><br/>
+  </div>
+  <div id="content"><ul id="log"></ul></div>
   <script>
     const username = document.getElementById("username");
-    const loglist = document.getElementById("log")
-    let name = ""
+    const loglist = document.getElementById("log");
+    let name = "";
+    let ran = false;
     const ably = new Ably.Realtime({
       authUrl: 'https://m-auth.imezx6t.workers.dev'
     });
 
     ably.connection.on('connected', () => {
+      if (!ran) {
+        mainStuff()
+      };
+    };
+    function mainStuff() {
+      ran = true
       log('✅ Connected');
     
       const channel = ably.channels.get('beta');
       
       channel.subscribe('msg', (msg) => {
         log(msg.data);
-        logLim(10);
+        //logLim(10);
       });
       const sendButt = document.getElementById("send-msg");
       const msg = document.getElementById("msg");
@@ -44,11 +79,11 @@
           uns.removeEventListener("click", setUsername);
         };
       };
-      function logLim(n) {
+      /*function logLim(n) {
         logs = loglist.children;
         while (logs.length > n) {
           loglist.removeChild(logs[0])
-        };
+        };*/
       };
     });
 
