@@ -32,13 +32,13 @@
         channel.publish('msg', name + msg.value);
       });
       const uns = document.getElementById("uns");
-      uns.addEventListener("click", setuserName);
+      uns.addEventListener("click", setUsername);
       function setUsername() {
         if (username.value=="") {
           name = username.value;
           username.disabled = true;
           uns.disabled = true;
-          uns.removeEventListener("click", setuserName);
+          uns.removeEventListener("click", setUsername);
         };
       };
     });
