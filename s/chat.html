@@ -61,6 +61,7 @@
   <div id="content"><ul id="log"></ul></div>
   <div id="connectpopup" class="connectele">Connecting, please wait...</div>
   <div id="connectcover" class="connectele"></div>
+  <script src="../src/badword.js"></script>
   <script>
     const username = document.getElementById("username");
     const loglist = document.getElementById("log");
@@ -85,7 +86,7 @@
       const sendButt = document.getElementById("send-msg");
       const msg = document.getElementById("msg");
       sendButt.addEventListener("click", () => {
-        if (msg.value == "") {
+        if (!msg.value == "") {
           channel.publish('msg', name + ": " + msg.value);
           msg.value="";
         };
