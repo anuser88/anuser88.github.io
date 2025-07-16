@@ -10,7 +10,7 @@
   <form>
     <label for="username">Username: </label>
     <input type="text" id="username" name="username" value="user"/>
-    <button id="uns">Submit</button><br/>
+    <button id="uns" onclick="setUsername()">Submit</button><br/>
     <label for="msg">Message: </label>
     <input type="text" id="msg" name="msg" value="hello"/>
     <button id="send-msg">Send</button><br/>
@@ -25,19 +25,21 @@
       log('✅ Connected');
     
       const channel = ably.channels.get('beta');
-      
+      const username = document.getElementById("username");
+      let name = "";
       channel.subscribe('msg', (msg) => {
         log(msg.data);
       });
-      const sendButt = document.getElementById("send-msg")
-      const msg = document.getElementById("msg")
+      const sendButt = document.getElementById("send-msg");
+      const msg = document.getElementById("msg");
       sendButt.addEventListener("click", () => {
-        channel.publish('msg', username + msg.value);
+        channel.publish('msg', name + msg.value);
       });
-      const uns = document.getElementById("uns")
-      uns.addEventListener("click", setUsername)
+      const uns = document.getElementById("uns");
       function setUsername() {
-        uns.removeEventListener
+        name = username.value;
+        username.disabled = true;
+        uns.disabled = true;
       }
     });
 
