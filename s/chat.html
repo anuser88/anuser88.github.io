@@ -14,6 +14,7 @@
   <ul id="log"></ul>
   <script>
     const username = document.getElementById("username");
+    const loglist = document.getElementById("log")
     let name = ""
     const ably = new Ably.Realtime({
       authUrl: 'https://m-auth.imezx6t.workers.dev'
@@ -26,6 +27,7 @@
       
       channel.subscribe('msg', (msg) => {
         log(msg.data);
+        logLim(10);
       });
       const sendButt = document.getElementById("send-msg");
       const msg = document.getElementById("msg");
@@ -42,6 +44,12 @@
           uns.removeEventListener("click", setUsername);
         };
       };
+      function logLim(n) {
+        logs = loglist.children;
+        while (logs.length > n) {
+          loglist.removeChild(logs[0])
+        };
+      };
     });
 
     ably.connection.on('failed', () => {
@@ -51,7 +59,7 @@
     function log(message) {
       const li = document.createElement('li');
       li.textContent = message;
-      document.getElementById('log').appendChild(li);
+      loglist.appendChild(li);
     };
   </script>
   <noscript>JavaScript needed</noscript>
