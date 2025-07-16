@@ -61,7 +61,7 @@
   <div id="content"><ul id="log"></ul></div>
   <div id="connectpopup" class="connectele">Connecting, please wait...</div>
   <div id="connectcover" class="connectele"></div>
-  <script src="../src/badword.js"></script>
+  <script src="../res/badword.js"></script>
   <script>
     const username = document.getElementById("username");
     const loglist = document.getElementById("log");
@@ -81,7 +81,7 @@
       log('✅ Connected');
       const channel = ably.channels.get('beta');
       channel.subscribe('msg', (msg) => {
-        log(msg.data);
+        log(censorBadWords(msg.data));
       });
       const sendButt = document.getElementById("send-msg");
       const msg = document.getElementById("msg");
