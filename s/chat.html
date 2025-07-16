@@ -13,6 +13,7 @@
   <button id="send-msg">Send</button><br/>
   <ul id="log"></ul>
   <script>
+    const username = document.getElementById("username");
     const ably = new Ably.Realtime({
       authUrl: 'https://m-auth.imezx6t.workers.dev'
     });
@@ -21,7 +22,6 @@
       log('✅ Connected');
     
       const channel = ably.channels.get('beta');
-      const username = document.getElementById("username");
       
       channel.subscribe('msg', (msg) => {
         log(msg.data);
@@ -35,7 +35,7 @@
       uns.addEventListener("click", setUsername);
       function setUsername() {
         if (username.value=="") {
-          name();
+          namer();
           username.disabled = true;
           uns.disabled = true;
           uns.removeEventListener("click", setUsername);
@@ -52,7 +52,7 @@
       li.textContent = message;
       document.getElementById('log').appendChild(li);
     };
-    function name() {const name = username.value};
+    function namer() {const name = username.value};
   </script>
   <noscript>JavaScript needed</noscript>
 </body>
