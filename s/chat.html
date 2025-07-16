@@ -8,7 +8,7 @@
 <body>
   <h2>chát</h2>Username: 
   <input type="text" id="username" name="username" value="user"/>
-  <button id="uns" onclick="setUsername()">Submit</button><br/>Message: 
+  <button id="uns">Submit</button><br/>Message: 
   <input type="text" id="msg" name="msg" value="hello"/>
   <button id="send-msg">Send</button><br/>
   <ul id="log"></ul>
@@ -32,11 +32,15 @@
         channel.publish('msg', name + msg.value);
       });
       const uns = document.getElementById("uns");
+      uns.addEventListener("click", setuserName);
       function setUsername() {
-        name = username.value;
-        username.disabled = true;
-        uns.disabled = true;
-      }
+        if (username.value=="") {
+          name = username.value;
+          username.disabled = true;
+          uns.disabled = true;
+          uns.removeEventListener("click", setuserName);
+        };
+      };
     });
 
     ably.connection.on('failed', () => {
