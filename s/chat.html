@@ -22,7 +22,7 @@
     
       const channel = ably.channels.get('beta');
       const username = document.getElementById("username");
-      let name = "";
+      
       channel.subscribe('msg', (msg) => {
         log(msg.data);
       });
@@ -35,7 +35,7 @@
       uns.addEventListener("click", setUsername);
       function setUsername() {
         if (username.value=="") {
-          name = username.value;
+          name();
           username.disabled = true;
           uns.disabled = true;
           uns.removeEventListener("click", setUsername);
@@ -52,6 +52,7 @@
       li.textContent = message;
       document.getElementById('log').appendChild(li);
     };
+    function name() {const name = username.value};
   </script>
   <noscript>JavaScript needed</noscript>
 </body>
