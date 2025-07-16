@@ -1,11 +1,17 @@
-// badwordFilter.js
+// badword.js
 
-export function censorBadWords(text) {
+function censorBadWords(text) {
+  let badWords = []
+  fetch('https://raw.githubusercontent.com/LDNOOBW/List-of-Dirty-Naughty-Obscene-and-Otherwise-Bad-Words/refs/heads/master/en')
+  .then(res => res.text())
+  .then(text => {
+    badWords = text.split('\n').map(line => line.trim()).filter(Boolean);
+  });
 
   function generateRegex(word) {
     const pattern = word
       .split('')
-      .map(char => `${char}[\\W_\\s\\d]*`) // allow symbols and space between letters
+      .map(char => `${char}[\\W_\\s\\d]*`)
       .join('');
     return new RegExp(pattern, 'gi');
   }
