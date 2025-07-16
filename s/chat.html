@@ -12,16 +12,14 @@
 
   <script>
     const ably = new Ably.Realtime({
-      authUrl: 'https://m-auth.imezx6t.workers.dev' // ✅ Your token server
+      authUrl: 'https://m-auth.imezx6t.workers.dev'
     });
-
-    const username = prompt("username", "user") + math.randomInt(100, 1000).toString()
 
     ably.connection.on('connected', () => {
       log('✅ Connected');
     
       const channel = ably.channels.get('beta');
-
+      const username = prompt("username", "user") + math.randomInt(100, 1000).toString()
       channel.subscribe('msg', (msg) => {
         log(msg.data);
       });
