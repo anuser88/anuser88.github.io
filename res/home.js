@@ -10,3 +10,13 @@ $(".head").mouseenter(function() {
     backgroundColor: "rgb(255,255,255)"
   });
 });
+$(document).ready(()=>{
+  let deg = 0
+  setInterval(()=>{
+    if(deg>360){
+      let deg=0
+    };
+    $("body").css("background","linear-gradient("+deg.toString()+"deg,red,yellow,green")
+    deg += 3
+  },50);
+});
